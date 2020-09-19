@@ -13,8 +13,6 @@
   become: yes
   vars:
     ubuntu_password: changeme_iP4Opoozaj
-    swap_file_path: /swap.img
-    swap_size: 2000
     chrome_deb_url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   tasks:
   - name: Add APT repository for x2go
@@ -84,18 +82,4 @@
   - name: Install Google Chrome
     apt:
       deb: "{{ chrome_deb_url }}"
-
-  - name: Check if swap file exists
-    stat:
-      path: "{{ swap_file_path }}"
-    register: swap_result
-
-  - name: Create and enable swap file
-    command: '{{ item }}'
-    with_items:
-    - 'dd if=/dev/zero of={{ swap_file_path }} bs=1M count={{ swap_size }}'
-    - 'chmod 600 {{ swap_file_path }}'
-    - 'mkswap {{ swap_file_path }}'
-    - 'swapon {{ swap_file_path }}'
-    when: not swap_result.stat.exists
 
