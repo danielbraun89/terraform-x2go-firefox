@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "scratch" {
-  ami             = "ami-0b418580298265d5c"
+  ami             = "ami-06fd8a495a537da8b"   # ubuntu 20.04
   instance_type   = "t3a.small"
   key_name        = "id_rsa"
   security_groups = ["all-open"]
