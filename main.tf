@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "scratch" {
   ami             = "ami-06fd8a495a537da8b"   # ubuntu 20.04
-  instance_type   = "t3a.small"
+  instance_type   = "t2.micro"   # free tier eligible
   key_name        = "id_rsa"
   security_groups = ["all-open"]
   user_data       = "${file("setup.sh")}"
