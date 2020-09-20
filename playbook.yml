@@ -2,14 +2,6 @@
 
 - hosts:
   - scratch
-  gather_facts: False
-  become: yes
-  tasks:
-  - name: Install Python (if not yet there)
-    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-
-- hosts:
-  - scratch
   become: yes
   vars:
     ubuntu_password: changeme_iP4Opoozaj
