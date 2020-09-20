@@ -67,7 +67,7 @@ resource "aws_instance" "scratch" {
   ami             = "ami-0dba2cb6798deb6d8"   # ubuntu 20.04
   instance_type   = "t3.micro"   # free tier eligible
   vpc_security_group_ids = [aws_security_group.allow_daniel.id, aws_security_group.allow_all_outbound.id, aws_security_group.allow_ssh.id]
-  user_data       = "${file("setup.sh")}"
+  user_data       = file("setup.sh")
   key_name         = "deployer-key"
   tags = {
     Name = "scratch"
